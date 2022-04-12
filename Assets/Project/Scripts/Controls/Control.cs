@@ -15,9 +15,9 @@ public class Control : MonoBehaviour
 
 	[SerializeField] Transform doll;
 
-	[SerializeField] float tiltLimit = 20f;
-	[SerializeField] float tiltSpeed = 0.2f;
-	[SerializeField] float rotateSeconds = 1f;
+	[SerializeField] float tiltLimit = 30f;
+	[SerializeField] float tiltSpeed = 6.5f;
+	[SerializeField] float rotateSeconds = 0.8f;
 
 #pragma warning restore 0649
 
@@ -30,7 +30,7 @@ public class Control : MonoBehaviour
 
 	private void TiltListener()
 	{
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, doll.rotation, tiltSpeed);
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, doll.rotation, tiltSpeed * Time.deltaTime * 10);
 
 		// Left and right 
 		if (Input.GetKeyDown(KeyCode.A))
